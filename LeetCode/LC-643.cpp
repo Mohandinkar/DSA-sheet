@@ -1,4 +1,5 @@
 //643 --> Maximum Average Subarray I
+//Also called as Sliding Window 
 
 class Solution {
 public:
