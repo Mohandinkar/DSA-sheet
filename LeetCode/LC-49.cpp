@@ -23,7 +23,7 @@ public:
     }
 };
 
-//---------------OR---------------
+//---------------OR---------------//
 //Without using the sort fuction
 
 class Solution {
