@@ -1,5 +1,7 @@
 // 240 --> Search a 2D Matrix II
 
+
+//TC => O(n*logn)
 class Solution {
     public:
     
@@ -34,5 +36,34 @@ class Solution {
         }
     };
 
+//-----------------OR----------------
+
+//TC => O(n+m)
+
+class Solution {
+    public:
+    
+        bool searchInMatrix(vector<vector<int>>& matrix, int target){
+            int rowSize = matrix.size();
+            int colSize = matrix[0].size();
+            int row = 0, col = colSize - 1;
+            while(row < rowSize && col >= 0){
+    
+                if(matrix[row][col] == target){
+                    return true;
+                }
+                if(target < matrix[row][col]){
+                    col--;
+                }
+                else{
+                    row++;
+                }
+            }
+            return false;
+        }
+        bool searchMatrix(vector<vector<int>>& matrix, int target) {
+            return searchInMatrix(matrix, target);
+        }
+    };
 
 
