@@ -21,7 +21,7 @@ class Solution {
             bool found = solve(board, word, row + 1, col, i+1) || //down
              solve(board, word, row - 1, col, i+1) ||  //up
              solve(board, word, row, col + 1, i+1) || // right
-             solve(board, word, row , col - 1, i+1); //left
+             solve(board, word, row , col - 1, i+1); //left 
     
             //unvisit
             board[row][col] = temp;
