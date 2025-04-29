@@ -65,3 +65,38 @@ class Solution {
           return head;
       }
   };
+
+  //OR
+  //By Using the Head Recursion
+
+  class Solution {
+    public:
+      
+      void solve(Node* head, int&carry){
+          
+          if(head == NULL){
+              return;
+          }
+          
+          solve(head->next, carry);
+          
+          int sum = head->data + carry;
+          int digit = sum%10;
+          carry = sum/10;
+          head->data = digit;
+          
+      }
+      Node* addOne(Node* head) {
+          // Your Code here
+          int carry = 1;
+          solve(head, carry);
+          //if carry remains insert at head
+          if(carry){
+              Node* newHead = new Node(carry);
+              newHead->next = head;
+              head = newHead;
+          }
+          // return head of list after adding one
+          return head;
+      }
+  };
