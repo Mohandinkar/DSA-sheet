@@ -1,6 +1,7 @@
 //142 --> Linked List Cycle II
 
 //Using the Hash Map
+//it uses space complexity O(n)
 
 /**
  * Definition for singly-linked list.
@@ -30,6 +31,7 @@ class Solution {
 
 //--------------OR-----------------
 //By using the Slow and fast pointer
+//it uses space complexity O(1)
 
 class Solution {
     public:
