@@ -21,3 +21,28 @@ int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
     
     return ans;
 }
+
+
+//--------------OR------------------
+
+int getLength(SinglyLinkedListNode*&llist){
+    SinglyLinkedListNode* temp = llist;
+    int count = 0;
+    while(temp != NULL){
+        count++;
+        temp = temp->next;
+        
+    }
+    return count;
+}
+
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+    int len = getLength(llist);
+    int fromStart = (len - positionFromTail);
+    int count = 1;
+    SinglyLinkedListNode* point = llist;
+    while(count++ != fromStart){
+        point = point->next;
+    }
+    
+    return point->data;
