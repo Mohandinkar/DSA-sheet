@@ -1,4 +1,6 @@
 // 61. Rotate List
+// Given the head of a linked list, rotate the list to the right by k places.
+
 
 /**
  * Definition for singly-linked list.
