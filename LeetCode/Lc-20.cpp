@@ -1,5 +1,5 @@
 //20. Valid Parentheses
-
+//using stack data structure to check if the parentheses are valid
 
 class Solution {
 public:
