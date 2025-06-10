@@ -36,3 +36,5 @@ public:
 
 // Time Complexity: O(n) where n is the number of nodes in the linked list.
 // Space Complexity: O(1) since we are not using any extra space except for a few pointers.
+// Note: The function modifies the original linked list to rearrange the nodes.
+// The function returns the head of the modified linked list where all odd indexed nodes come before all even indexed nodes.
