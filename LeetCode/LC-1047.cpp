@@ -1,5 +1,7 @@
 // 1047 --> Remove All Adjacent Duplicates In String
 
+
+//by using string array
 class Solution {
 public:
     string removeDuplicates(string s) {
@@ -20,6 +22,38 @@ public:
             }
         }
 
+        return ans;
+    }
+};
+
+//-----------------------OR--------------------
+
+//Using stack
+
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char>st;
+       
+
+        for(char ch:s){
+
+            if(!st.empty() && st.top() == ch){
+                st.pop();
+            }
+            else if(st.empty() || st.top() != ch){
+                st.push(ch); 
+            }
+        }
+
+        string ans = "";
+        while(!st.empty()){
+            ans += st.top();
+            st.pop();
+        }
+
+       reverse(ans.begin(), ans.end());
+    
         return ans;
     }
 };
