@@ -34,10 +34,12 @@ class Solution {
 
 /*
 Approach:
+
 1. Use a min-heap to always pick the two smallest ropes.
 2. Combine them, add their sum to the cost, and push the new rope back.
 3. Repeat until only one rope remains.
 4. The total accumulated cost is the minimum cost.
 Time Complexity: O(n log n)   (heap operations for n elements)
 Space Complexity: O(n)        (heap storage)
+
 */
