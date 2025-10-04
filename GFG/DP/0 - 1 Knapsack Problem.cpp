@@ -50,6 +50,10 @@ class Solution {
 
 
 /*
+Problem:
+   - We are given 'n' items with values[] and weights[].
+   - We need to maximize the total value without exceeding the given capacity 'W'.
+   - Each item can be either taken once (include) or not taken (exclude) → 0/1 Knapsack.
 Approach:
 - This is the 0/1 Knapsack problem.  
 - For each item at index i, we have two choices:
