@@ -36,6 +36,37 @@ class Solution {
         
         return dp[n];
     }
+
+
+    //using tabulation (Bottom-Up)
+     int solveTab(int n, int k){
+         
+        vector<int>dp(n+1, -1);
+        //base case analysis
+        dp[1] = k;
+        dp[2] = (k + k*(k-1));
+        
+        for(int i=3;i<=n; i++){
+            dp[i] = ((k-1)*((dp[i-1])%MOD + (dp[i-2])%MOD))%MOD;
+
+        }
+        
+        return dp[n];
+    }
+
+        /*
+    🎯 Approach (Bottom-Up Tabulation):
+    - Build the solution iteratively using a DP array.
+    - Base cases:
+        dp[1] = k
+        dp[2] = k + k * (k - 1)
+    - Relation:
+        dp[i] = (k - 1) * (dp[i - 1] + dp[i - 2])
+    - Fill dp[] from 3 to n using the relation.
+    - Return dp[n] as the final answer.
+    - TC: O(n), SC: O(n)
+    */
+
     
     int countWays(int n, int k) {
         
