@@ -54,6 +54,7 @@ class Solution {
         return dp[n];
     }
 
+
         /*
     🎯 Approach (Bottom-Up Tabulation):
     - Build the solution iteratively using a DP array.
@@ -67,7 +68,42 @@ class Solution {
     - TC: O(n), SC: O(n)
     */
 
-    
+     //Space optimization 
+     int solveSO(int n, int k){
+         
+       int prev2 = k;
+       int prev1 = (k + k*(k-1));
+       
+       if(n == 1)
+         return prev2;
+        if(n==2)
+            return prev1;
+        
+        
+        for(int i=3;i<=n; i++){
+            int curr = ((k-1)*( (prev2) % MOD + (prev1) % MOD))%MOD;
+            
+            prev2 = prev1;
+            prev1 = curr;
+
+        }
+        return prev1; 
+    }
+
+        /*
+    🎯 Approach (Space Optimized):
+    - Instead of using a full DP array, keep only the last two computed values.
+    - Base cases:
+        prev2 = dp[1] = k
+        prev1 = dp[2] = k + k * (k - 1)
+    - For i = 3 to n:
+        curr = (k - 1) * (prev1 + prev2) % MOD
+        Update prev2 = prev1, prev1 = curr
+    - Return prev1 as the final answer.
+    - TC: O(n), SC: O(1)
+    */
+
+
     int countWays(int n, int k) {
         
         // return solve(n, k);
