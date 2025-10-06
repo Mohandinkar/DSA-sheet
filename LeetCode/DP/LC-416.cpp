@@ -1,5 +1,4 @@
 //416 --> Partition Equal Subset Sum
-
 class Solution {
 public:
     
@@ -23,6 +22,36 @@ public:
 
         return  dp[targetSum][i];
     }
+
+    bool solveUsingTab(vector<int>& nums, int targetSum){
+        
+        int n = nums.size();
+        vector<vector<bool>>dp(targetSum+1, vector<bool>(n+1, 0));
+
+        //base case analysis
+        for(int col=0;col<=n;col++){
+            dp[0][col] = true;
+        }
+
+        for(int t=1;t<=targetSum;t++){
+            for(int i = n-1;i>=0; i--){
+            
+            bool include = false;
+            if(t - nums[i] >= 0){
+                include = dp[t - nums[i]] [i+1];
+            }
+           
+            bool exclude = dp[t] [i+1];
+
+            dp[t] [i] = include || exclude;
+ 
+            }
+        }
+
+        //analysis from initilzation function
+        return dp[targetSum][0];
+    }
+
     bool canPartition(vector<int>& nums) {
 
         int n =nums.size();
@@ -36,7 +65,8 @@ public:
 
         vector<vector<int>>dp(targetSum+1, vector<int>(n+1, -1));
 
-        return solveMemo(nums, targetSum, i, dp);
+        // return solveMemo(nums, targetSum, i, dp);
+        return solveUsingTab(nums, targetSum);
     }
 };
 
