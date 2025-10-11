@@ -72,3 +72,35 @@ public:
         return solveUsingTab(text1, text2);
     }
 };
+
+
+//space optimization
+//space optimization
+    
+    int solveUsingTabSO(string&text1, string&text2){
+
+        vector<int>prev(text2.length()+1, 0);
+        vector<int>curr(text2.length()+1,0);
+
+        for(int i=text1.length()-1;i>=0;i--){
+            for(int j=text2.length()-1;j>=0;j--){
+            //match
+            int ans = 0;
+            if(text1[i] == text2[j]){
+                ans = 1 + prev[j+1];
+            }
+            else{
+                //no match
+                ans = 0 + max(prev[j], curr[j+1]);
+            }
+            //stored in dp
+            curr[j] = ans;
+
+            }
+
+            //shifting 
+            prev = curr;
+        }
+
+        return prev[0];
+    }
