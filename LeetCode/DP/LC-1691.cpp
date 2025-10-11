@@ -149,6 +149,38 @@ public:
 
     }
 
+    //space optimization 
+    int solveByTabulationSO(vector<vector<int>>& cuboids){
+
+        int n = cuboids.size();
+        vector<int>prevRow(n+1, 0);
+        vector<int>currRow(n+1, 0);
+        //curr => 0 -> n
+        //prev => -1 -> curr
+        //reverse the loop conditions 
+        //n ka ans nikala hua hai already so start from n-1
+
+        for(int curr=n-1;curr>=0;curr--){
+            for(int prev = curr-1; prev>=-1;prev--){
+                int include = 0;
+                if(prev == -1 || isSafeToPlace(cuboids[prev], cuboids[curr])){
+                    include = cuboids[curr][2] + prevRow[curr+1];
+                }
+                int exclude = 0 + prevRow[prev+1];
+
+                currRow[prev+1] = max(include, exclude);  
+            }
+
+            //shifting 
+            prevRow = currRow;
+        }
+
+        //return as mentioned in initilization of the recusrion => curr = 0 & prev = -1
+        //-1 not valid index then +1 in each prev in dp to make it valid index
+        return prevRow[0];
+
+    }
+
     int maxHeight(vector<vector<int>>& cuboids) {
 
         //sort the each cuboid so we get max height at 2 nd index
