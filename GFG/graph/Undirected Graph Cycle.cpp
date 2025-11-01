@@ -86,3 +86,59 @@ We check each component using BFS,
 and if we reach an already visited node (not parent), 
 it means the graph has a cycle.
 */
+
+
+//USING THE DFS APPROACH
+class Solution {
+  public:
+  
+    bool checkCycleDFS(int src, unordered_map<int,bool>&visited, vector<vector<int>>&adj, int parent){
+           
+        visited[src] = true;
+        
+        for(auto neighbour : adj[src]){
+            
+            if(!visited[neighbour]){
+                bool ans = checkCycleDFS(neighbour, visited, adj, src);
+                
+                if(ans) return true;
+            }
+            else if(visited[neighbour] == true && neighbour != parent){
+                return true;
+            }
+        }
+        
+        return false;
+        
+         
+    }
+    
+    bool isCycle(int V, vector<vector<int>>& edges) {
+        // Code here
+        
+        vector<vector<int>>adj(V);
+        
+        for(auto &e : edges){
+            int u = e[0];
+            int v = e[1];
+            
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+        
+        unordered_map<int, bool>visited;
+        bool ans = false;
+        int parent  = -1;
+        
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                ans = checkCycleDFS(i,visited, adj, parent);
+                if(ans){
+                    break;
+                }
+            }
+        }
+        
+        return ans;
+    }
+};
